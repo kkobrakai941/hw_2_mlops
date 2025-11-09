@@ -3,7 +3,7 @@ import psycopg2
 import pandas as pd
 import matplotlib.pyplot as plt
 
-st.title("🔍 Fraud Detection Dashboard")
+st.title("Fraud Detection Dashboard")
 
 conn = psycopg2.connect(
     dbname="fraud",
@@ -20,11 +20,11 @@ def load_data():
 
 data = load_data()
 
-st.subheader("📋 Последние 10 транзакций с fraud_flag=1")
+st.subheader("Последние 10 транзакций с fraud_flag=1")
 frauds = data[data["fraud_flag"] == True].head(10)
 st.dataframe(frauds)
 
-st.subheader("📊 Распределение скорингов")
+st.subheader("Распределение скорингов")
 fig, ax = plt.subplots()
 ax.hist(data["score"], bins=20, color="skyblue", edgecolor="black")
 st.pyplot(fig)
